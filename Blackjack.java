@@ -27,7 +27,13 @@ public class Blackjack
         boolean gameover = false;
         boolean blackjack = false;
         ////////////////////////////////////////////////////////////////////////////////// if hit user draws
-        while(answer.equals("d")){ ///////////////// type d
+        while(answer.equals("d") || !(answer.equals ("s"))){ 
+            if(! (answer.equals("d"))){
+                System.out.println("enter a valid option");
+                System.out.println("Do you want to draw a card, or stay?"); 
+                answer = myObj.next();
+                continue;
+            }
             x = (int)(Math.random() * 13);
             pcard = cards[x];
             playertotal += (int) pcard;
@@ -52,7 +58,7 @@ public class Blackjack
             System.out.println("DEALER WINS!");
             gameover = true;
         }
-        
+
         while(dealertotal < 17 && gameover == false){
             y = (int)(Math.random() * 13);
             dcard = cards[y];
@@ -82,3 +88,5 @@ public class Blackjack
             }
     }
 }
+
+// notes: in this version, the player and dealer are only dealt 1 card to start off with. an ace is only counted as an 11.
