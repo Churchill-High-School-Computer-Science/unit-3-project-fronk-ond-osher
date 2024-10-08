@@ -60,14 +60,16 @@ public class Blackjack
             System.out.println("DEALER LOSES!");
             break;
             }
-            else{
-            System.out.println("DRAW!");
-            }
+            else if(dealertotal == playertotal){
+                System.out.println("DRAW");
+                break;
             }   
-            if(dealertotal > playertotal){
+            
+            }
+            if(dealertotal > playertotal && dealertotal < 22 && gameover == false){
                 System.out.println("DEALER WINS!");
             }
-            else if(dealertotal < playertotal){
+            else if(dealertotal < playertotal && playertotal < 22 && gameover == false){
                 System.out.println("PLAYER WINS!");
                 
             }
