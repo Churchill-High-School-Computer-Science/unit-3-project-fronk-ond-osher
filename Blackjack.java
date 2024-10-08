@@ -21,22 +21,23 @@ public class Blackjack
         System.out.println("dealer total is " + dealertotal);
         ///////////////////////////////////////////////////////////////////////////////////// ask user to hit or stay
         Scanner myObj = new Scanner(System.in);
-        System.out.println("Do you want to draw a card, or stay?");
+        System.out.println("Do you want to draw a card, or stay?"); //////////// type d or s
         String answer = myObj.next();
         /////////////////////////////////////////////////////////////////////////////////////////// necessary
         boolean gameover = false;
-        //////////////////////////////////////////////////////////////////////////////////if hit user draws
-        while(answer.equals("draw")){
+        boolean blackjack = false;
+        ////////////////////////////////////////////////////////////////////////////////// if hit user draws
+        while(answer.equals("d")){ ///////////////// type d
             x = (int)(Math.random() * 13);
             pcard = cards[x];
             playertotal += (int) pcard;
             System.out.println("player total is " + playertotal);
-            if(playertotal < 22 && playertotal > 20){
+            if(playertotal < 22 && playertotal > 20){ /////////////////////////////////////////// player blackjack
             System.out.println("YOU WIN!");
             gameover = true;
             break;
         }
-            else if(playertotal > 21){
+            else if(playertotal > 21){ ////////////////////////////// player bust
             System.out.println("YOU LOSE!");
             gameover = true;
             break;
@@ -47,36 +48,37 @@ public class Blackjack
         }
         }
         ///////////////////////////////////////////////////////////////////////////// if stay dealer draws
+        if(dealertotal > playertotal){
+            System.out.println("DEALER WINS!");
+            gameover = true;
+        }
+        
         while(dealertotal < 17 && gameover == false){
             y = (int)(Math.random() * 13);
             dcard = cards[y];
             dealertotal += (int) dcard;
             System.out.println("dealer total is " + dealertotal);
-            if(dealertotal < 22 && dealertotal > 20){
+            if(dealertotal < 22 && dealertotal > 20){ ////////////////////////// dealer blackjack
             System.out.println("DEALER WINS!");
+            blackjack = true;
             break;
             }
-            else if(dealertotal > 21){
+            else if(dealertotal > 21){ /////////////////////////////// dealer bust
             System.out.println("DEALER LOSES!");
             break;
             }
-            else if(dealertotal == playertotal){
+            else if(dealertotal == playertotal){ /////////////////////////// draw
                 System.out.println("DRAW");
                 break;
             }   
             
             }
-            if(dealertotal > playertotal && dealertotal < 22 && gameover == false){
+            if(dealertotal > playertotal && dealertotal < 22 && gameover == false && blackjack == false){ ////////////// dealer win
                 System.out.println("DEALER WINS!");
             }
-            else if(dealertotal < playertotal && playertotal < 22 && gameover == false){
+            else if(dealertotal < playertotal && playertotal < 22 && gameover == false){ /////////////// player win
                 System.out.println("PLAYER WINS!");
                 
             }
-    
-
-
-
-
     }
 }
